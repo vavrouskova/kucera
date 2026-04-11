@@ -1122,15 +1122,23 @@ footer {
         grid-template-columns: 1fr;
     }
     .lightbox-nav {
-        padding: 0 1rem;
+        padding: 0;
+        width: calc(100% - 1rem);
+        left: 0.5rem;
     }
     .lightbox-btn {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.2rem;
     }
     .lightbox-close {
-        top: 2rem;
-        right: 2rem;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 2.2rem;
+    }
+    .lightbox-content {
+        max-width: 92vw;
+        max-height: 75vh;
     }
 }
 
