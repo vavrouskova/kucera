@@ -1,0 +1,210 @@
+/* Gallery specific styles */
+.gallery-hero {
+    position: relative;
+    height: 40vh;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    margin-bottom: 5rem;
+}
+
+.gallery-hero .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%; /* Pro parallax efekt */
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.gallery-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.gallery-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.gallery-hero .title-massive {
+    font-size: 8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -6px;
+    margin-bottom: 3rem;
+}
+
+.gallery-hero .title-massive .indent {
+    margin-left: 20%;
+}
+
+.gallery-hero .hero-subtitle {
+    font-size: 1.5rem;
+    color: #444;
+    max-width: 500px;
+    line-height: 1.4;
+}
+
+.gallery-categories {
+    padding: 2rem 4rem 8rem;
+    min-height: auto;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem; /* Zvětšená mezera */
+    max-width: 1600px; /* Širší kontejner pro velké fotky */
+    margin: 0 auto;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+}
+
+/* Stagger every even item in the 2-column grid to create a masonry look */
+.category-card:nth-child(even) {
+    margin-top: 10rem;
+}
+
+.category-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* By default portrait and larger */
+    padding-bottom: 120%;
+}
+
+/* Unique aspect ratios for each card to enhance the masonry effect */
+.category-card:nth-child(1) .category-image { padding-bottom: 140%; }
+.category-card:nth-child(2) .category-image { padding-bottom: 90%; }
+.category-card:nth-child(3) .category-image { padding-bottom: 130%; }
+.category-card:nth-child(4) .category-image { padding-bottom: 80%; }
+
+.placeholder-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-card:hover .placeholder-img {
+    transform: scale(1.05);
+}
+
+.category-info {
+    position: relative;
+    padding-top: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+.category-info h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0;
+    transition: color 0.3s ease;
+}
+
+.category-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    letter-spacing: 0;
+}
+
+.category-card:hover h2 {
+    color: var(--text-secondary);
+}
+
+/* Technical Details on Images */
+.tech-metadata {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+    text-align: right;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.category-image::before, .category-image::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    z-index: 2;
+}
+
+.category-image::before {
+    top: 1rem;
+    left: 1rem;
+    border-right: none;
+    border-bottom: none;
+}
+
+.category-image::after {
+    bottom: 1rem;
+    right: 1rem;
+    border-left: none;
+    border-top: none;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .category-info h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-categories {
+        padding: 2rem 2rem 5rem;
+    }
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .category-card:nth-child(even) {
+        margin-top: 0; /* No staggered layout on mobile */
+    }
+    /* Reset aspect ratios on mobile to mostly matching */
+    .category-card:nth-child(1) .category-image,
+    .category-card:nth-child(2) .category-image,
+    .category-card:nth-child(3) .category-image,
+    .category-card:nth-child(4) .category-image {
+        padding-bottom: 100%;
+    }
+    .gallery-header .title-massive {
+        font-size: 15vw;
+    }
+}

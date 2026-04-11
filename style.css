@@ -1,0 +1,1288 @@
+:root {
+    --bg-main: #F7F4F0;
+    --text-primary: #000000;
+    --text-muted: #111111;
+    --accent: #A1A1A1;
+    --blue: #2575E8;
+    --footer-bg: #111111;
+    --font-main: 'Archivo', sans-serif;
+    --section-padding: 8rem 2rem; /* Sjednoceno s vnějším okrajem navbaru */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+    font-family: 'Archivo';
+    src: url('ARCHIVO/Archivo-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    font-size: 85%; /* Adjusted from 75% based on user feedback */
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-size: 1.15rem; /* Mírné zvětšení základu */
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+    max-width: 1200px;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: #000000; /* Černá lišta */
+    color: #FFFFFF; /* Bílý text */
+    border-radius: 100px; /* Zaoblené rohy - pilulka */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links a {
+    font-size: 1.0rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--blue);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('hp.png') center 10%/cover no-repeat;
+    transform: none;
+    filter: brightness(0.8) contrast(1.1) saturate(1); /* Snížen jas pro čitelnost */
+    transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero:hover .hero-bg {
+    transform: scale(1.15); /* Pomalý filmový zoom */
+}
+
+.hero-overlay {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: left; /* Zarovnání doleva podle feedbacku */
+    color: white;
+    text-shadow: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 3rem; /* Stejný padding jako navbar */
+}
+
+.hero-content h1 {
+    font-size: 5rem; /* Zvětšeno z 3.5rem pro maximální dopad */
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -4px;
+    margin-bottom: 3rem;
+}
+
+.hero-content p {
+    font-size: 5rem; /* Sjednoceno se jménem (5rem) */
+    font-weight: 800;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-top: 2.5rem;
+    opacity: 0.95;
+}
+
+/* Sticky Layout Sections */
+.sticky-section {
+    display: flex;
+    padding: 10rem 0; /* Odstraněn boční padding, o ten se stará container */
+    border-top: 1px solid rgba(0,0,0,0.1);
+    justify-content: center;
+}
+
+/* Vnitřní kontejner pro sjednocení s menu */
+.sticky-container {
+    display: flex;
+    width: calc(100% - 4rem); /* Identické s navbar */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem; /* Shoda s vnitřním paddingem navbaru */
+    gap: 10rem;
+}
+
+.sticky-header {
+    flex: 0 0 30%; /* Mírně zúženo pro více místa v obsahu */
+    position: sticky;
+    top: 10rem;
+    height: fit-content;
+}
+
+.sticky-header h2 {
+    font-size: 4.5rem; /* Mírně zvětšeno pro rovnováhu */
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+/* Inverse Section Style */
+.sticky-section.inverse {
+    background: #002F72;
+    color: #F7F4F0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.sticky-section.inverse .sticky-header h2,
+.sticky-section.inverse .step h3 {
+    color: #F7F4F0;
+}
+
+.sticky-section.inverse .step {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sticky-section.inverse .step p,
+.sticky-section.inverse .feature-list li {
+    color: rgba(247, 244, 240, 0.7);
+}
+
+.sticky-section.inverse .feature-list li::before {
+    color: #F7F4F0;
+}
+
+/* Scroll Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for steps */
+.step:nth-child(1) { transition-delay: 0.1s; }
+.step:nth-child(2) { transition-delay: 0.2s; }
+.step:nth-child(3) { transition-delay: 0.3s; }
+.step:nth-child(4) { transition-delay: 0.4s; }
+.step:nth-child(5) { transition-delay: 0.5s; }
+
+.sticky-content {
+    flex: 1;
+    padding-left: 4rem;
+}
+
+.sticky-content p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    letter-spacing: 0.03em;
+}
+
+/* Bio Image Hover Zoom */
+.bio-image {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.bio-image img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-image:hover img {
+    transform: scale(1.08); /* Filmový zoom při najetí */
+}
+
+
+.feature-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    padding-left: 0;
+}
+
+.feature-list li {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.feature-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-primary);
+}
+
+.collaboration-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 6rem;
+}
+
+.step {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 1.5rem;
+}
+
+.step h3 {
+    font-size: 2.5rem; /* Zvětšeno z 2rem */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.step p {
+    font-size: 1.4rem !important; /* Výrazné zvětšení z 1.1rem */
+    color: var(--text-muted);
+    margin-bottom: 0 !important;
+}
+
+/* Editorial Section Styles */
+.editorial-block {
+    padding: 0;
+    margin-top: 4rem; /* Přidáno horní odsazení pro "o něco níž" */
+    margin-bottom: 8rem;
+}
+
+.large-title {
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.service-text p {
+    font-size: 1.4rem !important;
+    line-height: 1.5;
+    margin-bottom: 3rem !important;
+    color: var(--text-primary);
+    max-width: 900px;
+}
+
+.full-width-image {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    margin: 6rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.full-width-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s ease;
+}
+
+.full-width-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Photo Slider Styles */
+.photo-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 4rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #eee;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .photo-slider {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* Slider Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(37, 117, 232, 0.35);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dot.active {
+    background: var(--blue);
+    width: 32px; /* Prodloužený segment (pill) */
+    height: 8px;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.dot:hover {
+    background: rgba(37, 117, 232, 0.6);
+}
+
+@media (max-width: 768px) {
+    .service-detail {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .large-title {
+        font-size: 4rem;
+    }
+}
+
+/* Zig-Zag Row */
+.row-zigzag {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 8rem;
+}
+
+.row-zigzag.reverse {
+    flex-direction: row-reverse;
+}
+
+.row-image {
+    flex: 1.2;
+    aspect-ratio: 4/5;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.values-image-box {
+    background: url('hp.png') center/cover no-repeat;
+    border-radius: 30px;
+    aspect-ratio: 1 / 1.15;
+    width: 100%;
+}
+
+.row-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.row-text {
+    flex: 1;
+}
+
+.row-text h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem; /* Mírně zvýšeno pro lepší rovnováhu */
+    text-transform: uppercase;
+}
+
+.editorial-block h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem; /* Mírně zvýšeno pro zdravější mezeru */
+    letter-spacing: -0.02em;
+}
+
+.editorial-block p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    letter-spacing: 0.03em;
+}
+
+/* Odstraněno duplicitní definování .pill-button */
+
+.row-text p {
+    font-size: 1.1rem !important;
+    color: var(--text-muted);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.product-card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-card .img-box {
+    aspect-ratio: 16/9; /* Sjednoceno na 16:9 */
+    background: #e0e0e0;
+    margin-bottom: 0px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product-card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card .img-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.product-card .img-box:hover {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E") 16 16, zoom-in;
+}
+
+.product-card:hover .img-box img {
+    transform: scale(1.08);
+}
+
+.product-card:hover .img-box::before {
+    opacity: 1;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    transition: all 0.5s ease;
+}
+
+.product-grid:not(.expanded) .product-card:nth-child(n+9) {
+    display: none;
+}
+
+.btn-show-more {
+    display: block;
+    margin: 4rem auto 0;
+    padding: 1.2rem 4rem;
+    background: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #fff;
+}
+
+.btn-show-more:hover {
+    background: #1a63d4;
+    border-color: #1a63d4;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.product-card h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.product-card span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Buttons */
+.pill-button {
+    display: inline-block;
+    padding: 1.2rem 4rem;
+    background: var(--blue);
+    color: #fff;
+    border: 1px solid var(--blue);
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-button.large {
+    padding: 1.5rem 5rem;
+    font-size: 1rem;
+}
+
+.editorial-block .pill-button {
+    margin-top: 0;
+}
+
+.pill-button:hover {
+    background: #1a63d4;
+    border-color: #1a63d4;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    background: var(--footer-bg);
+    color: white;
+    padding: 6rem 0 3rem;
+    width: 100%;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: calc(100% - 4rem);
+    margin: 0 auto;
+    padding: 0 3rem;
+    gap: 4rem;
+}
+
+.footer-left {
+    flex: 0 0 auto;
+}
+
+.footer-name {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 1.5rem !important;
+    color: white;
+}
+
+.footer-tagline {
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    margin-bottom: 0 !important;
+}
+
+.footer-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 5rem;
+    padding-top: 0.5rem;
+}
+
+.footer-contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.footer-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+}
+
+.footer-contact-item a,
+.footer-contact-item span:not(.footer-label) {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-contact-item a:hover {
+    opacity: 1;
+    color: var(--blue);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: calc(100% - 4rem);
+    margin: 4rem auto 0;
+    padding: 2rem 3rem 0;
+    border-top: 1px solid #222;
+    font-size: 0.7rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .footer-inner {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .footer-right {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Final CTA */
+.final-cta {
+    background: #111;
+    width: 100%;
+    padding: 10rem 0;
+}
+
+.cta-inner {
+    max-width: 1200px;
+    width: calc(100% - 4rem);
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.cta-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 2.5rem !important;
+}
+
+.cta-heading {
+    font-size: 6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    color: white;
+    margin-bottom: 5rem;
+}
+
+.cta-link {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.3rem;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.cta-link:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    opacity: 1;
+}
+
+.cta-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 3rem;
+}
+
+.cta-contacts a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.cta-contacts a:hover {
+    opacity: 1;
+    color: var(--blue);
+}
+
+@media (max-width: 1024px) {
+    .sticky-section {
+        flex-direction: column;
+        padding: 4rem 2rem;
+    }
+    .sticky-header {
+        position: static;
+        margin-bottom: 3rem;
+    }
+    .sticky-content {
+        padding-left: 0;
+    }
+    .hero-content h1 {
+        font-size: 20vw;
+    }
+    .row-zigzag {
+        flex-direction: column !important;
+    }
+    .navbar {
+        padding: 2rem;
+    }
+}
+
+/* Hero Scroll Arrow */
+.hero-scroll-arrow {
+    border: none;
+    background-color: var(--blue);
+    color: white;
+}
+
+.hero-scroll-arrow:hover {
+    opacity: 1 !important;
+    background-color: #1a63d4 !important;
+    transform: translateY(5px);
+    color: white;
+}
+
+/* Contact section links */
+#contact .sticky-content a {
+    transition: color 0.2s ease;
+}
+
+#contact .sticky-content a:hover {
+    opacity: 1;
+    color: var(--blue);
+}
+
+/* Brands / Partners Section */
+.brands-section {
+    padding: 2rem 0 6rem; /* Výrazně zmenšené horní odsazení */
+    background: transparent; 
+    text-align: left; 
+}
+
+.map-container iframe {
+    transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0) contrast(1) opacity(1) !important;
+}
+
+
+.brands-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 3rem; /* Zmenšeno pro lepší návaznost */
+    font-weight: 700;
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7rem 6rem;
+    max-width: 700px;
+}
+
+.brand-item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 5rem;
+}
+
+.brand-logo {
+    height: 100%;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    object-position: left bottom;
+    opacity: 1;
+    filter: none;
+    transition: all 0.4s ease;
+}
+
+.brand-logo:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gallery Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Změněno ze 4 na 3 pro větší náhledy */
+    gap: 1.5rem; /* Zvýšeno mírně pro více prostoru */
+}
+
+.product-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+    cursor: none; /* Skryjeme myš pro lupu */
+}
+
+/* Darkening Overlay */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 117, 232, 0.45);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+/* Dynamic Zoom Icon (Moved by JS) */
+.zoom-icon {
+    position: fixed; /* Fixed relative to viewport for better smoothness or absolute if inside card */
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.1s ease-out;
+    width: 40px;
+    height: 40px;
+}
+
+.zoom-icon svg {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.img-box {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Globální 16:9 pro všechny náhledy */
+    overflow: hidden;
+    background: #333;
+    margin-bottom: 0px;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover img {
+    transform: scale(1.08); /* Trochu výraznější zoom */
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .brands-section {
+        padding: 4rem 2rem;
+    }
+    .brands-grid {
+        gap: 4rem;
+    }
+    .brand-logo {
+        height: 2rem;
+    }
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 5000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 85%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px; /* Sjednoceno s kartami v galerii */
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 3rem;
+    right: 4rem;
+    color: var(--blue);
+    font-size: 3rem;
+    cursor: pointer;
+    font-weight: 200;
+    z-index: 5005;
+    transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    color: #1a63d4;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.lightbox-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.lightbox-btn:hover {
+    background: #1a63d4;
+    transform: scale(1.1);
+}
+
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .lightbox-nav {
+        padding: 0 1rem;
+    }
+    .lightbox-btn {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    .lightbox-close {
+        top: 2rem;
+        right: 2rem;
+    }
+}
+
+/* Gallery Show More functionality */
+.product-card.hidden-product {
+    display: none;
+}
+
+.container--gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem; /* Sjednoceno s navbar paddingem */
+}
+
+.gallery-page .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 1024px) {
+    .gallery-page .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-page .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* Gallery Show More functionality (keep for potential usage) */
+.product-card.hidden-product {
+    display: none;
+}
+
+/* ================================
+   MOBILE — komplexní opravy
+   ================================ */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        top: 1rem;
+        padding: 0.9rem 1.2rem;
+        width: calc(100% - 2rem);
+    }
+    .nav-logo {
+        font-size: 1rem;
+    }
+    .nav-links {
+        gap: 1.2rem;
+    }
+    .nav-links a {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Hero */
+    .hero-content {
+        padding: 0 1.5rem !important;
+        padding-top: 8rem !important;
+    }
+    .hero-content h1 {
+        font-size: 16vw !important;
+        letter-spacing: -2px;
+        margin-bottom: 1.5rem;
+    }
+    .hero-content p {
+        font-size: 1.7rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0 !important;
+    }
+
+    /* Sticky sekce */
+    .sticky-section {
+        padding: 4rem 0;
+    }
+    .sticky-container {
+        flex-direction: column;
+        width: calc(100% - 2rem);
+        padding: 0 1.5rem;
+        gap: 2rem;
+    }
+    .sticky-header h2 {
+        font-size: 2.8rem;
+        letter-spacing: -1px;
+    }
+    .sticky-content {
+        padding-left: 0;
+    }
+    .sticky-content p {
+        font-size: 1rem;
+    }
+
+    /* Kroky spolupráce */
+    .step h3 {
+        font-size: 1.6rem;
+    }
+    .step p {
+        font-size: 1.1rem !important;
+    }
+
+    /* Editorial bloky */
+    .large-title {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+    }
+    .editorial-block p {
+        font-size: 1rem;
+    }
+
+    /* Kontakt */
+    #contact .sticky-content p:first-child {
+        font-size: 1.6rem !important;
+    }
+    #contact .sticky-content p:nth-child(2) {
+        font-size: 1.2rem !important;
+    }
+
+    /* CTA sekce */
+    .final-cta {
+        padding: 5rem 0;
+    }
+    .cta-inner {
+        width: calc(100% - 2rem);
+        padding: 0 1.5rem;
+    }
+    .cta-heading {
+        font-size: 3rem;
+        letter-spacing: -1px;
+        margin-bottom: 3rem;
+    }
+
+    /* Patička */
+    .footer-inner {
+        width: calc(100% - 2rem);
+        padding: 0 1.5rem;
+    }
+    .footer-name {
+        font-size: 2.5rem;
+    }
+    .footer-bottom {
+        width: calc(100% - 2rem);
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    /* Brands */
+    .brands-grid {
+        gap: 2.5rem;
+    }
+}

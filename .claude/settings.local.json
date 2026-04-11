@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --version)",
+      "Bash(php --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(sudo chown:*)",
+      "Bash(curl -s -o \"blum-logo.svg\" \"https://upload.wikimedia.org/wikipedia/commons/e/e4/Blum-Logo.svg\")",
+      "Bash(curl -s -o \"hettich-logo.svg\" \"https://upload.wikimedia.org/wikipedia/commons/1/15/Logo_of_Hettich_%28company%29.svg\")",
+      "Bash(ls -la /Users/vendy/Desktop/KUCERA/*.html /Users/vendy/Desktop/KUCERA/*.css /Users/vendy/Desktop/KUCERA/*.js)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)"
+    ]
+  }
+}
