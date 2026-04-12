@@ -247,6 +247,7 @@ a:hover {
 .step:nth-child(3) { transition-delay: 0.3s; }
 .step:nth-child(4) { transition-delay: 0.4s; }
 .step:nth-child(5) { transition-delay: 0.5s; }
+.step:nth-child(6) { transition-delay: 0.6s; }
 
 .sticky-content {
     flex: 1;

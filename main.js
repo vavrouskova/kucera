@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Add show class for general fade-in / slide-up
                 entry.target.classList.add('show');
 
+                // Activate reveal elements (steps etc.)
+                if (entry.target.classList.contains('reveal')) {
+                    entry.target.classList.add('active');
+                }
+
                 // Trigger flicker for tech tags
                 const techTag = entry.target.querySelector('.tech-tag');
                 if (techTag) techTag.classList.add('flicker-show');
@@ -52,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         obj.dataset.animated = true;
     }
 
-    const hiddenElements = document.querySelectorAll('.hidden, section');
+    const hiddenElements = document.querySelectorAll('.hidden, .reveal, section');
     hiddenElements.forEach((el, index) => {
         // Automatically add staggered classes to service cards and category cards
         if (el.classList.contains('service-card') || el.classList.contains('category-card')) {
