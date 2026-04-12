@@ -520,6 +520,10 @@ a:hover {
     letter-spacing: 0.03em;
 }
 
+.editorial-block p + p {
+    margin-top: -3rem;
+}
+
 /* Odstraněno duplicitní definování .pill-button */
 
 .row-text p {
@@ -1323,6 +1327,10 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 3rem; /* Sjednoceno s navbar paddingem */
+}
+
+.gallery-page span[id] {
+    scroll-margin-top: 6rem;
 }
 
 .gallery-page .product-grid {
