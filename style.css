@@ -840,9 +840,17 @@ footer {
         flex-direction: column;
         padding: 4rem 2rem;
     }
+    .sticky-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 0 1rem;
+    }
     .sticky-header {
         position: static;
-        margin-bottom: 3rem;
+        margin-bottom: 0;
+    }
+    .sticky-header h2 {
+        font-size: 3.5rem;
     }
     .sticky-content {
         padding-left: 0;
