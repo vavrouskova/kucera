@@ -724,6 +724,7 @@ footer {
 .footer-bottom {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     width: calc(100% - 4rem);
     margin: 4rem auto 0;
@@ -733,6 +734,18 @@ footer {
     color: #444;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.footer-top {
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.footer-top:hover {
+    color: #1a63d4;
 }
 
 @media (max-width: 768px) {
@@ -903,21 +916,25 @@ footer {
 
 .brand-item {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-start;
     height: 5rem;
 }
 
 .brand-logo {
-    height: 100%;
+    height: 2rem;
     width: auto;
     max-width: 240px;
     object-fit: contain;
-    object-position: left bottom;
+    object-position: left center;
     opacity: 1;
     filter: none;
     transition: all 0.4s ease;
 }
+
+/* Individuální korekce — různé množství whitespace v SVG */
+.brand-item:nth-child(1) .brand-logo { height: 3.2rem; } /* Blum — text uvnitř orange boxu */
+.brand-item:nth-child(5) .brand-logo { height: 5rem; }   /* Hettich — grafický symbol nad textem */
 
 .brand-logo:hover {
     opacity: 0.8;
