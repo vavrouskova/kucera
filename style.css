@@ -797,6 +797,10 @@ footer {
     .footer-top:not(.footer-top-mobile) {
         display: none;
     }
+    .footer-left {
+        width: 100%;
+        justify-content: space-between;
+    }
 }
 
 /* Final CTA */
@@ -1128,14 +1132,14 @@ footer {
 .lightbox-wrapper::after {
     content: 'MK';
     position: absolute;
-    bottom: 0;
+    bottom: 3rem;
     right: 0;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: #fff;
     background: #111;
-    padding: 0.3rem 0.6rem;
+    padding: 0.4rem 0.9rem;
     z-index: 10;
     pointer-events: none;
 }
