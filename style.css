@@ -1045,6 +1045,9 @@ footer {
     .brand-logo {
         height: 2rem;
     }
+    .cta-contacts a {
+        font-size: 1.1rem;
+    }
 }
 
 /* Lightbox Styles */
