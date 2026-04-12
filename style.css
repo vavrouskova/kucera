@@ -567,6 +567,19 @@ a:hover {
     z-index: 1;
 }
 
+.product-card .img-box::after {
+    content: 'TK';
+    position: absolute;
+    bottom: 0.8rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    z-index: 2;
+    pointer-events: none;
+}
+
 .product-card .img-box:hover {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E") 16 16, zoom-in;
 }
@@ -677,12 +690,6 @@ footer {
     gap: 4rem;
 }
 
-.footer-left {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
 
 .footer-name {
     font-size: 3.5rem;
@@ -754,15 +761,33 @@ footer {
 }
 
 .footer-top {
-    color: var(--blue);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
 }
 
 .footer-top:hover {
-    color: #1a63d4;
+    background: #1a63d4;
+}
+
+/* Desktop: skryj mobilní šipku */
+.footer-top-mobile {
+    display: none;
+}
+
+/* Mobilní šipka vedle jména */
+.footer-left {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -777,6 +802,12 @@ footer {
     .footer-bottom {
         flex-direction: column;
         gap: 0.5rem;
+    }
+    .footer-top-mobile {
+        display: flex;
+    }
+    .footer-top:not(.footer-top-mobile) {
+        display: none;
     }
 }
 
