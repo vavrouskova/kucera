@@ -215,7 +215,10 @@
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close">&times;</span>
         <div class="lightbox-wrapper">
-            <img class="lightbox-content" src="" alt="Zvětšený náhled">
+            <div class="lightbox-img-container">
+                <img class="lightbox-content" src="" alt="Zvětšený náhled">
+                <span class="lightbox-watermark">MK</span>
+            </div>
             <div class="lightbox-nav">
                 <button class="lightbox-btn prev">&lsaquo;</button>
                 <button class="lightbox-btn next">&rsaquo;</button>
@@ -236,6 +239,29 @@
         
         let currentImages = [];
         let currentIndex = 0;
+
+        const watermark = lightbox.querySelector('.lightbox-watermark');
+
+        const positionWatermark = () => {
+            const container = lightboxImg.parentElement;
+            const cw = container.clientWidth;
+            const ch = container.clientHeight;
+            const nw = lightboxImg.naturalWidth;
+            const nh = lightboxImg.naturalHeight;
+            if (!nw || !nh) return;
+            const scale = Math.min(cw / nw, ch / nh);
+            const rw = nw * scale;
+            const rh = nh * scale;
+            const offsetRight = (cw - rw) / 2;
+            const offsetBottom = (ch - rh) / 2;
+            watermark.style.right = offsetRight + 'px';
+            watermark.style.bottom = offsetBottom + 'px';
+        };
+
+        lightboxImg.addEventListener('load', positionWatermark);
+        window.addEventListener('resize', () => {
+            if (lightbox.classList.contains('active')) positionWatermark();
+        });
 
         const openLightbox = (index, images) => {
             currentImages = images;
