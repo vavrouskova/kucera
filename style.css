@@ -732,6 +732,14 @@ footer {
     opacity: 1;
     color: var(--blue);
 }
+.footer-contact-item--full {
+    grid-column: 1 / -1;
+}
+.footer-contact-item--full span {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+}
 
 .footer-bottom {
     display: flex;
@@ -1013,7 +1021,6 @@ footer {
     overflow: hidden;
     border-radius: 12px;
     transition: transform 0.4s ease;
-    cursor: none; /* Skryjeme myš pro lupu */
 }
 
 /* Darkening Overlay */
@@ -1144,6 +1151,8 @@ footer {
 
 .lightbox-watermark {
     position: absolute;
+    right: 0;
+    bottom: 6px;
     font-size: 0.85rem;
     font-weight: 800;
     letter-spacing: 2px;
@@ -1152,7 +1161,12 @@ footer {
     padding: 0.3rem 0.7rem;
     z-index: 10;
     pointer-events: none;
-    transition: bottom 0.15s, right 0.15s;
+}
+@media (min-width: 769px) {
+    .lightbox-watermark {
+        font-size: 1.3rem;
+        padding: 0.45rem 1rem;
+    }
 }
 
 .lightbox.active .lightbox-wrapper {
@@ -1250,7 +1264,14 @@ footer {
     }
     .lightbox-img-container {
         width: 92vw;
-        height: 65vh;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .lightbox-img-container .lightbox-content {
+        max-height: 60vh;
+        width: 100%;
     }
     .lightbox-nav {
         position: relative;
@@ -1271,6 +1292,13 @@ footer {
         width: 3rem;
         height: 3rem;
         font-size: 2.5rem;
+    }
+    .lightbox-watermark {
+        position: relative;
+        align-self: flex-end;
+        bottom: auto;
+        right: auto;
+        margin-top: -2.8rem;
     }
     .lightbox-close {
         top: 1.5rem;
@@ -1434,4 +1462,168 @@ footer {
     .brands-grid {
         gap: 2.5rem;
     }
+}
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    color: #fff;
+    z-index: 10000;
+    padding: 1.5rem 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.cookie-banner.active {
+    transform: translateY(0);
+}
+.cookie-banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.cookie-banner-inner p {
+    flex: 1;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    min-width: 250px;
+}
+.cookie-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+.cookie-btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.cookie-btn--accept {
+    background: var(--blue);
+    color: #fff;
+}
+.cookie-btn--accept:hover {
+    background: #1a63d4;
+}
+.cookie-btn--reject {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #444;
+}
+.cookie-btn--reject:hover {
+    border-color: #888;
+}
+
+/* Map Placeholder */
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    border-radius: 12px;
+    gap: 1rem;
+}
+.map-placeholder p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+.map-placeholder button {
+    padding: 0.6rem 1.5rem;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+}
+.map-placeholder button:hover {
+    background: #1a63d4;
+}
+
+/* Privacy Modal */
+.privacy-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.privacy-modal.active {
+    display: flex;
+}
+.privacy-modal-content {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 3rem;
+    position: relative;
+}
+.privacy-modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.privacy-modal-content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.privacy-modal-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.privacy-modal-content a {
+    color: var(--blue);
+}
+.privacy-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+    line-height: 1;
+}
+.privacy-modal-close:hover {
+    color: #000;
+}
+.footer-bottom a {
+    color: inherit;
+    text-decoration: none;
+}
+.footer-bottom a:hover {
+    color: var(--blue);
 }

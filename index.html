@@ -119,8 +119,12 @@
                             <p>Společně vybereme dekory a kování ze&nbsp;vzorníků.</p>
                         </div>
                         <div class="step reveal">
+                            <h3>Cenová kalkulace</h3>
+                            <p>Cena je vždy stanovena individuálně dle&nbsp;rozsahu zakázky.</p>
+                        </div>
+                        <div class="step reveal">
                             <h3>Výroba</h3>
-                            <p>V dílně vyrobím veškeré díly s&nbsp;maximální péčí.</p>
+                            <p>V dílně vyrobím veškeré díly<br>s&nbsp;maximální péčí.</p>
                         </div>
                         <div class="step reveal">
                             <h3>Montáž</h3>
@@ -175,7 +179,7 @@
                         <div class="slider-track">
                             <div class="slide"><img src="FINAL/VESTAVNE-SKRINE/hf_20260322_200205_681ab31e-381d-4000-826e-7c8bff8c3475.webp" alt="Vestavná skříň na míru do ložnice – Martin Kučera truhlář" loading="lazy"></div>
                             <div class="slide"><img src="FINAL/VESTAVNE-SKRINE/hf_20260322_194637_0689beb8-2d14-41e1-8455-6271eb4f6489.png" alt="Posuvná vestavná skříň na míru – zakázkový truhlář" loading="lazy"></div>
-                            <div class="slide"><img src="FINAL/VESTAVNE-SKRINE/hf_20260322_202129_6f7b6966-4c48-4341-b55f-2b8716e8da55.webp" alt="Vestavná skříň s posuvnými dveřmi – realizace na míru" loading="lazy"></div>
+                            <div class="slide"><img src="FINAL/VESTAVNE-SKRINE/hf_20260322_191252_53c674c1-d49f-4828-88c8-9e27450f39b1.webp" alt="Vestavná skříň s posuvnými dveřmi – realizace na míru" loading="lazy"></div>
                         </div>
                         <div class="slider-dots"></div>
                     </div>
@@ -244,12 +248,19 @@
                         </div>
                     </div>
 
+                    <p style="font-size: 0.95rem; color: rgba(0,0,0,0.45); margin-bottom: 4rem;">Reklamace je možné uplatnit osobně, e-mailem nebo telefonicky.</p>
+
                     <div class="map-container" style="width: 100%; height: 400px; border-radius: 12px; overflow: hidden;">
+                        <div id="map-placeholder" class="map-placeholder">
+                            <p>Pro zobrazení mapy je potřeba souhlas s cookies.</p>
+                            <button onclick="acceptCookies()">Povolit cookies</button>
+                        </div>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10292.4!2d16.035!3d49.805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470dc3a6e8b0b5d9%3A0xa00af11518428d0!2sRychnov%2C%20539%2043%20Krouna!5e0!3m2!1scs!2scz!4v1710540845341!5m2!1scs!2scz"
+                            id="google-map"
+                            data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10292.4!2d16.035!3d49.805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470dc3a6e8b0b5d9%3A0xa00af11518428d0!2sRychnov%2C%20539%2043%20Krouna!5e0!3m2!1scs!2scz!4v1710540845341!5m2!1scs!2scz"
                             width="100%"
                             height="100%"
-                            style="border:0;"
+                            style="border:0; display:none;"
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
@@ -285,12 +296,16 @@
                     <span>Rychnov 3, 539 44 Krouna</span>
                 </div>
                 <div class="footer-contact-item">
+                    <span class="footer-label">Web</span>
+                    <a href="https://www.kucera-truhlarstvi.cz" target="_blank">www.kucera-truhlarstvi.cz</a>
+                </div>
+                <div class="footer-contact-item">
                     <span class="footer-label">IČO</span>
                     <span>76119742</span>
                 </div>
                 <div class="footer-contact-item">
-                    <span class="footer-label">Web</span>
-                    <a href="https://www.kucera-truhlarstvi.cz" target="_blank">www.kucera-truhlarstvi.cz</a>
+                    <span class="footer-label">DIČ</span>
+                    <span>CZ76119742</span>
                 </div>
             </div>
             <a href="#" class="footer-top" aria-label="Nahoru">
@@ -302,9 +317,40 @@
         </div>
         <div class="footer-bottom">
             <span>© 2026 Martin Kučera</span>
+            <span>Zapsán v živnostenském rejstříku</span>
+            <a href="#" onclick="document.getElementById('privacy-modal').classList.add('active');return false;">Ochrana osobních údajů</a>
             <span>Všechna práva vyhrazena</span>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-banner-inner">
+            <p>Tento web používá cookies třetích stran (Google Maps) pro zobrazení mapy. Žádné další cookies nepoužíváme.</p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-btn cookie-btn--accept">Přijmout</button>
+                <button onclick="rejectCookies()" class="cookie-btn cookie-btn--reject">Odmítnout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="privacy-modal">
+        <div class="privacy-modal-content">
+            <button class="privacy-modal-close" onclick="document.getElementById('privacy-modal').classList.remove('active')">&times;</button>
+            <h2>Ochrana osobních údajů</h2>
+            <h3>Správce osobních údajů</h3>
+            <p>Martin Kučera, IČO: 76119742, DIČ: CZ76119742<br>Rychnov 3, 539 44 Krouna<br>E-mail: <a href="mailto:martin@kucera-truhlarstvi.cz">martin@kucera-truhlarstvi.cz</a><br>Tel: <a href="tel:+420776025086">+420 776 025 086</a></p>
+            <h3>Jaké údaje zpracováváme</h3>
+            <p>Tento web nesbírá osobní údaje návštěvníků. Nepoužíváme kontaktní formuláře ani analytické nástroje. Jediné cookies třetích stran mohou být načteny prostřednictvím vložené mapy Google Maps, a to pouze s vaším souhlasem.</p>
+            <h3>Cookies</h3>
+            <p>Web používá jednu vlastní cookie (<em>cookie_consent</em>) pro uložení vaší volby ohledně souhlasu s cookies. Mapa Google Maps se načte pouze po vašem souhlasu — bez něj nejsou žádné cookies třetích stran ukládány.</p>
+            <h3>Vaše práva</h3>
+            <p>Máte právo na přístup k údajům, jejich opravu, výmaz, omezení zpracování a právo podat stížnost u Úřadu pro ochranu osobních údajů (<a href="https://www.uoou.cz" target="_blank" rel="noopener">www.uoou.cz</a>).</p>
+            <h3>Kontakt</h3>
+            <p>S dotazy ohledně ochrany osobních údajů se obraťte na e-mail <a href="mailto:martin@kucera-truhlarstvi.cz">martin@kucera-truhlarstvi.cz</a>.</p>
+        </div>
+    </div>
 
     <script src="main.js"></script>
     <script>
@@ -399,6 +445,46 @@
             } else {
                 navbar.style.background = 'rgba(0, 0, 0, 1)';
             }
+        });
+
+        // Cookie Consent
+        function getCookie(name) {
+            const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+            return v ? v.pop() : null;
+        }
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + days * 86400000);
+            document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+        }
+        function loadMap() {
+            const iframe = document.getElementById('google-map');
+            const placeholder = document.getElementById('map-placeholder');
+            if (iframe && iframe.dataset.src) {
+                iframe.src = iframe.dataset.src;
+                iframe.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'none';
+            }
+        }
+        function acceptCookies() {
+            setCookie('cookie_consent', 'accepted', 365);
+            document.getElementById('cookie-banner').classList.remove('active');
+            loadMap();
+        }
+        function rejectCookies() {
+            setCookie('cookie_consent', 'rejected', 365);
+            document.getElementById('cookie-banner').classList.remove('active');
+        }
+        // Init cookie consent
+        const consent = getCookie('cookie_consent');
+        if (!consent) {
+            setTimeout(() => document.getElementById('cookie-banner').classList.add('active'), 500);
+        } else if (consent === 'accepted') {
+            loadMap();
+        }
+        // Close privacy modal on backdrop click
+        document.getElementById('privacy-modal').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('active');
         });
     </script>
 </body>

@@ -218,10 +218,10 @@
             <div class="lightbox-img-container">
                 <img class="lightbox-content" src="" alt="Zvětšený náhled">
                 <span class="lightbox-watermark">MK</span>
-            </div>
-            <div class="lightbox-nav">
-                <button class="lightbox-btn prev">&lsaquo;</button>
-                <button class="lightbox-btn next">&rsaquo;</button>
+                <div class="lightbox-nav">
+                    <button class="lightbox-btn prev">&lsaquo;</button>
+                    <button class="lightbox-btn next">&rsaquo;</button>
+                </div>
             </div>
         </div>
     </div>
@@ -242,8 +242,18 @@
 
         const watermark = lightbox.querySelector('.lightbox-watermark');
 
-        const positionWatermark = () => {
+        const positionOverlays = () => {
+            const isMobile = window.innerWidth <= 768;
             const container = lightboxImg.parentElement;
+            const prevBtn = container.querySelector('.lightbox-btn.prev');
+            const nextBtn = container.querySelector('.lightbox-btn.next');
+            if (isMobile) {
+                watermark.style.right = '';
+                watermark.style.bottom = '';
+                if (prevBtn) prevBtn.style.left = '';
+                if (nextBtn) nextBtn.style.right = '';
+                return;
+            }
             const cw = container.clientWidth;
             const ch = container.clientHeight;
             const nw = lightboxImg.naturalWidth;
@@ -255,12 +265,14 @@
             const offsetRight = (cw - rw) / 2;
             const offsetBottom = (ch - rh) / 2;
             watermark.style.right = offsetRight + 'px';
-            watermark.style.bottom = offsetBottom + 'px';
+            watermark.style.bottom = (offsetBottom + 14) + 'px';
+            if (prevBtn) prevBtn.style.left = (offsetRight + 12) + 'px';
+            if (nextBtn) nextBtn.style.right = (offsetRight + 12) + 'px';
         };
 
-        lightboxImg.addEventListener('load', positionWatermark);
+        lightboxImg.addEventListener('load', positionOverlays);
         window.addEventListener('resize', () => {
-            if (lightbox.classList.contains('active')) positionWatermark();
+            if (lightbox.classList.contains('active')) positionOverlays();
         });
 
         const openLightbox = (index, images) => {
@@ -312,6 +324,21 @@
             if (e.key === 'ArrowRight') showNext();
             if (e.key === 'ArrowLeft') showPrev();
         });
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) showNext();
+                else showPrev();
+            }
+        }, { passive: true });
 
         // Show More Logic
         document.querySelectorAll('.btn-show-more').forEach(btn => {
