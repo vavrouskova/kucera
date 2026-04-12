@@ -797,7 +797,9 @@ footer {
     }
     .footer-bottom {
         flex-direction: column;
+        align-items: flex-start;
         gap: 0.5rem;
+        font-size: 0.85rem;
     }
     .footer-top-mobile {
         display: flex;
@@ -1327,6 +1329,12 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-bottom: 5rem;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-page .product-grid:not(.expanded) .product-card:nth-child(n+9) {
+    display: block !important;
 }
 
 @media (max-width: 1024px) {

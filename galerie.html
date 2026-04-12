@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie Realizací | Martin Kučera</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="gallery.css">
 </head>
@@ -340,16 +341,65 @@
             }
         }, { passive: true });
 
-        // Show More Logic
+        // Show More Logic — smooth height animation
+        const getCollapsedHeight = (grid) => {
+            // Measure height of first 2 rows (8 cards in 4-col grid)
+            const cards = grid.querySelectorAll('.product-card');
+            if (cards.length < 1) return 0;
+            const gridGap = parseFloat(getComputedStyle(grid).rowGap) || 0;
+            const firstCard = cards[0];
+            const cardHeight = firstCard.offsetHeight;
+            // Determine visible rows: 8 cards / columns per row
+            const cols = Math.round(grid.offsetWidth / firstCard.offsetWidth);
+            const visibleRows = Math.ceil(8 / cols);
+            return (cardHeight * visibleRows) + (gridGap * (visibleRows - 1));
+        };
+
         document.querySelectorAll('.btn-show-more').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const grid = btn.previousElementSibling;
-                const isExpanded = grid.classList.toggle('expanded');
-                btn.textContent = isExpanded ? 'Zobrazit méně' : 'Zobrazit více';
-                
-                if (!isExpanded) {
-                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const grid = btn.previousElementSibling;
+
+            // Set initial collapsed height
+            const initCollapsed = () => {
+                if (!grid.classList.contains('expanded')) {
+                    grid.style.maxHeight = getCollapsedHeight(grid) + 'px';
                 }
+            };
+
+            // Wait for images to load to get correct heights
+            window.addEventListener('load', initCollapsed);
+            // Also set immediately for cached images
+            requestAnimationFrame(initCollapsed);
+
+            btn.addEventListener('click', () => {
+                if (grid.classList.contains('expanded')) {
+                    // Collapse: set current height first, then animate to collapsed
+                    grid.style.maxHeight = grid.scrollHeight + 'px';
+                    requestAnimationFrame(() => {
+                        grid.style.maxHeight = getCollapsedHeight(grid) + 'px';
+                    });
+                    grid.classList.remove('expanded');
+                    btn.textContent = 'Zobrazit více';
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    // Expand: animate to full height
+                    grid.style.maxHeight = grid.scrollHeight + 'px';
+                    grid.classList.add('expanded');
+                    btn.textContent = 'Zobrazit méně';
+                    // Remove max-height after transition so content isn't clipped
+                    grid.addEventListener('transitionend', function handler() {
+                        if (grid.classList.contains('expanded')) {
+                            grid.style.maxHeight = 'none';
+                        }
+                        grid.removeEventListener('transitionend', handler);
+                    });
+                }
+            });
+        });
+
+        // Update collapsed heights on resize
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.product-grid:not(.expanded)').forEach(grid => {
+                grid.style.maxHeight = getCollapsedHeight(grid) + 'px';
             });
         });
     </script>
