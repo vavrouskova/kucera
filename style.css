@@ -1004,7 +1004,7 @@ footer {
 
 /* Individuální korekce — různé množství whitespace v SVG */
 .brand-item:nth-child(1) .brand-logo { height: 3.2rem; } /* Blum — text uvnitř orange boxu */
-.brand-item:nth-child(5) .brand-logo { height: 5rem; }   /* Hettich — grafický symbol nad textem */
+.brand-item:nth-child(5) .brand-logo { height: 3.5rem; }   /* Hettich — grafický symbol nad textem */
 
 .brand-logo:hover {
     opacity: 0.8;
